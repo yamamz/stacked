@@ -26,8 +26,7 @@ class SkeletonLoader extends StatefulWidget {
   SkeletonLoaderState createState() => SkeletonLoaderState();
 }
 
-class SkeletonLoaderState extends State<SkeletonLoader>
-    with TickerProviderStateMixin {
+class SkeletonLoaderState extends State<SkeletonLoader> with TickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Color?> animationOne;
   late Animation<Color?> animationTwo;
@@ -47,10 +46,8 @@ class SkeletonLoaderState extends State<SkeletonLoader>
     // Store the loading widget we first constructed with
     _initialWidget ??= widget.child;
 
-    animationOne = ColorTween(begin: widget.startColor, end: widget.endColor)
-        .animate(_controller);
-    animationTwo = ColorTween(begin: widget.endColor, end: widget.startColor)
-        .animate(_controller);
+    animationOne = ColorTween(begin: widget.startColor, end: widget.endColor).animate(_controller);
+    animationTwo = ColorTween(begin: widget.endColor, end: widget.startColor).animate(_controller);
 
     _controller.forward();
 
@@ -80,8 +77,7 @@ class SkeletonLoaderState extends State<SkeletonLoader>
       // has now updated to match the actual data.
       // We will use a delayed future to only fade out the shader mask
       // a few milliseconds after we have received the actual widget.
-      Future.delayed(const Duration(milliseconds: _transitionDuration))
-          .then((value) {
+      Future.delayed(const Duration(milliseconds: _transitionDuration)).then((value) {
         if (!_dispose) {
           setState(() {
             // print('&^&^&^&^&   -     Set widet transition to false!!');
@@ -102,7 +98,7 @@ class SkeletonLoaderState extends State<SkeletonLoader>
                   /// TODO: This field is depreacted but I'm adding it
                   /// to support older versions for flutter
                   // ignore: deprecated_member_use
-                  vsync: this,
+
                   duration: const Duration(milliseconds: 450),
                   curve: Curves.easeOut,
                   child: ShaderMask(
